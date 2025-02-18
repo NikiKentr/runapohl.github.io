@@ -331,7 +331,7 @@ nav ul li a.active {
     opacity: 1;
 }
 
-/* Home page nav styles - removed shadow */
+/* Home page nav styles */
 .home-nav {
     opacity: 0;
     transition: opacity 1s ease;
@@ -372,25 +372,37 @@ nav ul li a.active {
         0 0 92px rgba(255,105,180,0.3);
 }
 
-/* Title styles */
-.home-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ff69b4;
-    transition: all 0.3s ease;
-    text-align: center;
-    font-family: 'Barlow', sans-serif;
-    cursor: pointer;
-    z-index: 2;
-    position: relative;
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .home-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .home-nav ul li a {
+        font-size: 1.2rem;
+    }
 }
 
-.home-title:hover {
-    text-shadow: 
-        0 0 7px #ff69b4,
-        0 0 10px #ff69b4,
-        0 0 21px #ff69b4,
-        0 0 42px rgba(255,105,180,0.7),
-        0 0 82px rgba(255,105,180,0.5),
-        0 0 92px rgba(255,105,180,0.3);
+/* Tablet adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .home-nav ul {
+        gap: 20px;
+    }
+
+    .home-nav ul li a {
+        font-size: 1.3rem;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .home-nav ul {
+        gap: 15px;
+    }
+
+    .home-nav ul li a {
+        font-size: 1.1rem;
+    }
 }
