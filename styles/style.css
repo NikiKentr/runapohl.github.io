@@ -406,3 +406,110 @@ nav ul li a.active {
         font-size: 1.1rem;
     }
 }
+
+/* Title styles */
+.home-title, header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff69b4;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+}
+
+.home-title:hover, header h1:hover {
+    text-shadow: 
+        0 0 7px #ff69b4,
+        0 0 10px #ff69b4,
+        0 0 21px #ff69b4,
+        0 0 42px rgba(255,105,180,0.7),
+        0 0 82px rgba(255,105,180,0.5),
+        0 0 92px rgba(255,105,180,0.3);
+}
+
+/* Home page nav styles */
+.home-nav {
+    opacity: 0;
+    transition: opacity 1s ease;
+    background: transparent;
+    position: relative;
+    margin-top: 1rem;
+    z-index: 2;
+}
+
+.home-nav.fade-in {
+    opacity: 1;
+}
+
+.home-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 40px;
+}
+
+.home-nav ul li a {
+    text-decoration: none;
+    color: #ff69b4;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-family: 'Barlow', sans-serif;
+}
+
+.home-nav ul li a:hover {
+    text-shadow: 
+        0 0 7px #ff69b4,
+        0 0 10px #ff69b4,
+        0 0 21px #ff69b4,
+        0 0 42px rgba(255,105,180,0.7),
+        0 0 82px rgba(255,105,180,0.5),
+        0 0 92px rgba(255,105,180,0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .home-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .home-nav ul li a {
+        font-size: 1.2rem;
+    }
+    
+    .home-title, header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .home-nav ul {
+        gap: 20px;
+    }
+
+    .home-nav ul li a {
+        font-size: 1.3rem;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .home-nav ul {
+        gap: 15px;
+    }
+
+    .home-nav ul li a {
+        font-size: 1.1rem;
+    }
+    
+    .home-title, header h1 {
+        font-size: 1.8rem;
+    }
+}
