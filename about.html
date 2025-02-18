@@ -38,5 +38,13 @@
             </div>
         </main>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerTitle = document.querySelector('header h1');
+            headerTitle.addEventListener('click', function() {
+                window.location.href = 'index.html?menu=true';
+            });
+        });
+    </script>
 </body>
 </html>

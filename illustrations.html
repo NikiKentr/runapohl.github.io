@@ -26,12 +26,23 @@
         </main>
     </div>
 
-    <!-- Popup for enlarged image -->
-    <div class="popup" id="popup">
-        <span class="popup-close" id="popup-close">&times;</span>
-        <img class="popup-img" id="popup-img" src="" alt="Enlarged Illustration">
-    </div>
+<!-- Popup for Image -->
+<div id="popup" class="popup">
+    <img id="popup-img" src="" alt="Popup Image" />
+    <div id="popup-title"></div>  <!-- Title will be shown here -->
+</div>
 
     <script src="scripts/load-illustrations.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerTitle = document.querySelector('header h1');
+            headerTitle.addEventListener('click', function() {
+                window.location.href = 'index.html?menu=true';
+            });
+        });
+    </script>
+
+
 </body>
 </html>

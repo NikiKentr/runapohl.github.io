@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const popup = document.getElementById('popup');
     const popupImg = document.getElementById('popup-img');
     const popupClose = document.getElementById('popup-close');
+    const popupTitle = document.getElementById('popup-title');  // Title element in the popup
 
     debugLog(`Grid element: ${grid ? 'Found' : 'NOT FOUND'}`);
     debugLog(`Popup element: ${popup ? 'Found' : 'NOT FOUND'}`);
     debugLog(`Popup Image element: ${popupImg ? 'Found' : 'NOT FOUND'}`);
+    debugLog(`Popup Title element: ${popupTitle ? 'Found' : 'NOT FOUND'}`);
 
     if (!grid) {
         debugLog('ERROR: Cannot find illustrations grid.');
@@ -68,21 +70,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Image click event for popup
         img.addEventListener('click', () => {
             popupImg.src = img.src;
-            popup.classList.add('active');
+            popupTitle.textContent = file;  // Set the image name as the title
+            popup.classList.add('active');  // Show popup
         });
     });
 
     // Close popup on background or close button click
     popup.addEventListener('click', (e) => {
         if (e.target === popup || e.target === popupClose) {
-            popup.classList.remove('active');
+            popup.classList.remove('active');  // Hide popup
         }
     });
 
     // Close popup with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
-            popup.classList.remove('active');
+            popup.classList.remove('active');  // Hide popup
         }
     });
 });

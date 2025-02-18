@@ -9,8 +9,54 @@
 </head>
 <body>
     <div class="background">
-        <a href="menu.html" class="enter-button">RUNA POHL</a>
+        <div class="home-title">RUNA POHL</div>
+        <nav class="home-nav">
+            <ul>
+                <li><a href="about.html">Über mich</a></li>
+                <li><a href="illustrations.html">Illustrationen</a></li>
+                <li><a href="comics.html">Comics</a></li>
+                <li><a href="fiber-art.html">Fiber-art</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.querySelector('.home-title');
+            const nav = document.querySelector('.home-nav');
+            const background = document.querySelector('.background');
+            let menuVisible = false;
+
+            // Check if we should show menu immediately (from URL parameter)
+            if (window.location.search.includes('menu=true')) {
+                background.classList.add('fade-out');
+                nav.classList.add('fade-in');
+                menuVisible = true;
+            }
+
+            title.addEventListener('click', function() {
+                if (!menuVisible) {
+                    background.classList.add('fade-out');
+                    setTimeout(() => {
+                        nav.classList.add('fade-in');
+                        menuVisible = true;
+                    }, 400);
+                }
+            });
+
+            // Navigation links handling
+            const navLinks = document.querySelectorAll('.home-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 200);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
