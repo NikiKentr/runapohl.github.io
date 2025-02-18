@@ -1,6 +1,4 @@
-// scripts/load-illustrations.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Logging function to help with debugging
     function debugLog(message) {
         console.log(`[Illustrations Debug] ${message}`);
     }
@@ -10,15 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const grid = document.getElementById('illustrationsGrid');
     const popup = document.getElementById('popup');
     const popupImg = document.getElementById('popup-img');
+    const popupClose = document.getElementById('popup-close');
 
-    // Detailed element checking
     debugLog(`Grid element: ${grid ? 'Found' : 'NOT FOUND'}`);
     debugLog(`Popup element: ${popup ? 'Found' : 'NOT FOUND'}`);
     debugLog(`Popup Image element: ${popupImg ? 'Found' : 'NOT FOUND'}`);
 
     if (!grid) {
-        debugLog('ERROR: Cannot find illustrations grid. Check your HTML.');
-        // Create a visible error message on the page
+        debugLog('ERROR: Cannot find illustrations grid.');
         const errorDiv = document.createElement('div');
         errorDiv.style.color = 'red';
         errorDiv.style.padding = '20px';
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // Hardcoded list of images to test
     const imageFiles = [
         '2017SpaceSofa.JPG',
         '2018LudwigundIchAcyrlaufMalpappe.jpg',
@@ -47,61 +43,38 @@ document.addEventListener('DOMContentLoaded', function() {
         '2019ImHohenGrass.jpeg'
     ];
 
-    debugLog(`Total images to process: ${imageFiles.length}`);
-
-    // Counter for successfully loaded images
-    let loadedImagesCount = 0;
-
-    imageFiles.forEach((file, index) => {
-        debugLog(`Processing image: ${file}`);
-
-        // Create grid item and image
+    imageFiles.forEach((file) => {
         const gridItem = document.createElement('div');
         gridItem.className = 'grid-item';
 
         const img = document.createElement('img');
         img.alt = file;
+        img.src = `images/illustrations/${file}`;
 
-        // Full path logging for debugging
-        const imagePath = `images/illustrations/${file}`;
-        debugLog(`Attempting to load image from: ${imagePath}`);
-        img.src = imagePath;
+        img.onload = function() {
+            gridItem.appendChild(img);
+            grid.appendChild(gridItem);
 
-        // Enhanced error and load handling
+            setTimeout(() => {
+                gridItem.classList.add('fade-in');
+            }, 100);
+        };
+
         img.onerror = function() {
-            debugLog(`ERROR: Failed to load image ${file}`);
-            // Create a visible error for this specific image
             gridItem.innerHTML = `<p style="color:red;">Error loading: ${file}</p>`;
             grid.appendChild(gridItem);
         };
 
-        img.onload = function() {
-            loadedImagesCount++;
-            debugLog(`Successfully loaded image: ${file}`);
-            gridItem.appendChild(img);
-            grid.appendChild(gridItem);
-
-            // Fade-in effect
-            setTimeout(() => {
-                gridItem.classList.add('fade-in');
-            }, 100 * index);
-
-            // Log progress
-            debugLog(`Loaded ${loadedImagesCount}/${imageFiles.length} images`);
-        };
-
         // Image click event for popup
         img.addEventListener('click', () => {
-            debugLog(`Image clicked: ${file}`);
             popupImg.src = img.src;
             popup.classList.add('active');
         });
     });
 
-    // Popup close events
+    // Close popup on background or close button click
     popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            debugLog('Popup background clicked');
+        if (e.target === popup || e.target === popupClose) {
             popup.classList.remove('active');
         }
     });
@@ -109,13 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close popup with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && popup.classList.contains('active')) {
-            debugLog('Popup closed with Escape key');
             popup.classList.remove('active');
         }
     });
-
-    debugLog('Script processing completed');
 });
-
-// Immediate logging to verify script is being loaded
-console.log('Illustrations loading script parsed and ready');
