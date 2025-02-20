@@ -27,18 +27,12 @@ header h1 {
     margin: 0;
     font-family: 'Barlow', sans-serif;
     cursor: pointer;
-    color: #ff69b4;
+    color: #dd5030;
     transition: all 0.3s ease;
 }
 
 header h1:hover {
-    text-shadow: 
-        0 0 7px #ff69b4,
-        0 0 10px #ff69b4,
-        0 0 21px #ff69b4,
-        0 0 42px rgba(255,105,180,0.7),
-        0 0 82px rgba(255,105,180,0.5),
-        0 0 92px rgba(255,105,180,0.3);
+    color:#f4a195
 }
 
 nav {
@@ -63,7 +57,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #ff69b4;
+    color: #dd5030;
     font-size: 1.5rem;
     font-weight: bold;
     transition: all 0.3s ease;
@@ -72,13 +66,8 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    text-shadow: 
-        0 0 7px #ff69b4,
-        0 0 10px #ff69b4,
-        0 0 21px #ff69b4,
-        0 0 42px rgba(255,105,180,0.7),
-        0 0 82px rgba(255,105,180,0.5),
-        0 0 92px rgba(255,105,180,0.3);
+    color:#f4a195
+    
 }
 
 /* Content Wrapper */
@@ -148,7 +137,7 @@ nav ul li a.active {
 
 .home-nav ul li a {
     text-decoration: none;
-    color: #ff69b4;
+    color: #dd5030;
     font-size: 1.5rem;
     font-weight: bold;
     transition: all 0.3s ease;
@@ -156,20 +145,15 @@ nav ul li a.active {
 }
 
 .home-nav ul li a:hover {
-    text-shadow: 
-        0 0 7px #ff69b4,
-        0 0 10px #ff69b4,
-        0 0 21px #ff69b4,
-        0 0 42px rgba(255,105,180,0.7),
-        0 0 82px rgba(255,105,180,0.5),
-        0 0 92px rgba(255,105,180,0.3);
+    color:#f4a195;
+    
 }
 
 /* Title styles */
 .home-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #ff69b4;
+    color: #dd5030;
     transition: all 0.3s ease;
     text-align: center;
     font-family: 'Barlow', sans-serif;
@@ -179,13 +163,8 @@ nav ul li a.active {
 }
 
 .home-title:hover {
-    text-shadow: 
-        0 0 7px #ff69b4,
-        0 0 10px #ff69b4,
-        0 0 21px #ff69b4,
-        0 0 42px rgba(255,105,180,0.7),
-        0 0 82px rgba(255,105,180,0.5),
-        0 0 92px rgba(255,105,180,0.3);
+    color:#f4a195;
+    
 }
 
 /* About Page Styles */
