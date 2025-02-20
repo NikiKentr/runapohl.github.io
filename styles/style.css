@@ -401,3 +401,18 @@ nav ul li a.active {
         width: 80px;
     }
 }
+
+
+.copyright-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 5px 0;
+    font-family: 'Barlow', sans-serif;
+    color: #666;
+    z-index: 1000;
+}

@@ -22,6 +22,8 @@
             padding: 50px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative; /* Added to support fixed positioning of footer */
+            min-height: 100vh; /* Ensure full viewport height */
         }
         
         .logo {
@@ -36,7 +38,7 @@
         
         .featured-image {
             cursor: pointer;
-            max-width: 65%; /* Reduced to 80% as requested */
+            max-width: 65%;
         }
         
         .featured-image img {
@@ -48,7 +50,7 @@
         .menu {
             margin-top: 30px;
             opacity: 0;
-            visibility: hidden; /* Use visibility instead of height */
+            visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
             margin-bottom: 40px;
         }
@@ -76,6 +78,21 @@
         
         .menu ul li a:hover {
             color: #f4a195;
+        }
+
+        /* Copyright Footer Styles */
+        .copyright-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 5px 0;
+            font-family: 'Barlow', sans-serif;
+            color: #666;
+            z-index: 1000;
         }
         
         @media (max-width: 768px) {
@@ -107,6 +124,10 @@
         <div class="featured-image" id="featuredImage">
             <img src="images/featured-image.jpg" alt="RUNA POHL Featured Work">
         </div>
+
+        <footer class="copyright-footer">
+            © 2025 Runa Pohl. All Rights Reserved.
+        </footer>
     </div>
 
     <script>
