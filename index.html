@@ -5,58 +5,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RUNA POHL</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Barlow', sans-serif;
+            background: white;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            margin-bottom: 60px;
+            cursor: pointer;
+        }
+        
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+        
+        .featured-image {
+            cursor: pointer;
+            max-width: 65%; /* Reduced to 80% as requested */
+        }
+        
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .menu {
+            margin-top: 30px;
+            opacity: 0;
+            visibility: hidden; /* Use visibility instead of height */
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            margin-bottom: 40px;
+        }
+        
+        .menu.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 40px;
+        }
+        
+        .menu ul li a {
+            text-decoration: none;
+            color: #dd5030;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .menu ul li a:hover {
+            color: #f4a195;
+        }
+        
+        @media (max-width: 768px) {
+            .menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="background">
-        <div class="home-title">RUNA POHL</div>
-        <nav class="home-nav">
+    <div class="container">
+        <div class="logo" id="logo">
+            <img src="images/logo.png" alt="RUNA POHL">
+        </div>
+        
+        <nav class="menu" id="menu">
             <ul>
                 <li><a href="about.html">Über mich</a></li>
                 <li><a href="illustrations.html">Illustrationen</a></li>
-                <li><a href="zines.html">Zines</a></li>
-                <li><a href="originale.html">Originale</a></li>
+                <li><a href="comics.html">Zines</a></li>
+                <li><a href="fiber-art.html">Originale</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
                 <li><a href="shop.html">Shop</a></li>
             </ul>
         </nav>
+        
+        <div class="featured-image" id="featuredImage">
+            <img src="images/featured-image.jpg" alt="RUNA POHL Featured Work">
+        </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const title = document.querySelector('.home-title');
-            const nav = document.querySelector('.home-nav');
-            const background = document.querySelector('.background');
-            let menuVisible = false;
-
-            // Check if we should show menu immediately (from URL parameter)
-            if (window.location.search.includes('menu=true')) {
-                background.classList.add('fade-out');
-                nav.classList.add('fade-in');
-                menuVisible = true;
+            const logo = document.getElementById('logo');
+            const featuredImage = document.getElementById('featuredImage');
+            const menu = document.getElementById('menu');
+            
+            function showMenu() {
+                menu.classList.add('visible');
             }
-
-            title.addEventListener('click', function() {
-                if (!menuVisible) {
-                    background.classList.add('fade-out');
-                    setTimeout(() => {
-                        nav.classList.add('fade-in');
-                        menuVisible = true;
-                    }, 400);
-                }
-            });
-
-            // Navigation links handling
-            const navLinks = document.querySelectorAll('.home-nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const href = this.getAttribute('href');
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 200);
-                });
-            });
+            
+            logo.addEventListener('click', showMenu);
+            featuredImage.addEventListener('click', showMenu);
         });
     </script>
 </body>
