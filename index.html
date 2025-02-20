@@ -22,13 +22,23 @@
             padding: 50px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Added to support fixed positioning of footer */
-            min-height: 100vh; /* Ensure full viewport height */
+            position: relative;
+            min-height: 100vh;
         }
         
         .logo {
             margin-bottom: 60px;
             cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo.inactive {
+            cursor: default;
+            opacity: 1 !important;
+        }
+        
+        .logo:hover:not(.inactive) {
+            opacity: 0.7;
         }
         
         .logo img {
@@ -39,6 +49,16 @@
         .featured-image {
             cursor: pointer;
             max-width: 65%;
+            transition: opacity 0.3s ease;
+        }
+        
+        .featured-image.inactive {
+            cursor: default;
+            opacity: 1 !important;
+        }
+        
+        .featured-image:hover:not(.inactive) {
+            opacity: 0.7;
         }
         
         .featured-image img {
@@ -80,7 +100,6 @@
             color: #f4a195;
         }
 
-        /* Copyright Footer Styles */
         .copyright-footer {
             position: fixed;
             bottom: 0;
@@ -138,6 +157,10 @@
             
             function showMenu() {
                 menu.classList.add('visible');
+                
+                // Add inactive class to disable hover and click
+                logo.classList.add('inactive');
+                featuredImage.classList.add('inactive');
             }
             
             logo.addEventListener('click', showMenu);
