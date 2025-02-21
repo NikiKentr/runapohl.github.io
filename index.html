@@ -151,6 +151,13 @@
     </div>
 
     <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) { 
+            e.preventDefault(); 
+        }, false);
+    </script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const logo = document.getElementById('logo');
             const featuredImage = document.getElementById('featuredImage');
