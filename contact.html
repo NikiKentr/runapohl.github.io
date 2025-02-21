@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - RUNA POHL</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <style>
+        .contact-container {
+            display: flex;
+            width: 90%;
+            max-width: 1550px;
+            margin: 0 auto;
+            gap: 4rem;
+            padding: 2rem;
+            align-items: center;
+            color: #000000;
+        }
+        
+        .contact-image {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        
+        .contact-details {
+            flex: 1.2;
+            padding: 0;
+        }
+        
+        .contact-details h1 {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .contact-details p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details a {
+            color: #dd5030;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: #f4a195;
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .contact-image {
+                max-width: 100%;
+                order: 1;
+            }
+            
+            .contact-details {
+                order: 2;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="RUNA POHL" class="header-logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="illustrations.html">Illustrationen</a></li>
+            <li><a href="zines.html">Zines</a></li>
+            <li><a href="originale.html">Originale</a></li>
+            <li><a href="contact.html" class="active">Kontakt</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="page-content-wrapper">
+        <div class="contact-container">
+            <div class="contact-image">
+                <img src="images/featured-image.jpg" alt="Runa Pohl Contact">
+            </div>
+            <div class="contact-details">
+                <h1>Kontakt</h1>
+                <p>
+                    <strong>Runa Pohl</strong><br>
+                    Künstlerin & Illustratorin<br>
+                    Schwäbisch Hall, Deutschland
+                </p>
+                <p>
+                    <img src="images/email-icon.png" alt="Email" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
+                    <a href="mailto:runapohl@gmail.com"><strong>runapohl@gmail.com</strong></a>
+                </p>
+                <p>
+                    <img src="images/instagram-icon.png" alt="Instagram" style="width: 30px; height: 30px; margin-right: 10px; vertical-align: middle;">
+                    <a href="https://www.instagram.com/runapohl" target="_blank"><strong>@runapohl</strong></a>
+                </p>
+                <p>
+                    Interessiert an Zusammenarbeit, Aufträgen oder einfach nur Austausch?<br> 
+                    Zögern Sie nicht, mich zu kontaktieren!
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="copyright-footer">
+        © 2025 Runa Pohl. All Rights Reserved.
+    </footer>
+</body>
+</html>

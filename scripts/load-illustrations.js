@@ -28,21 +28,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const imageFiles = [
-        '2017SpaceSofa.JPG',
-        '2018LudwigundIchAcyrlaufMalpappe.jpg',
-        '2019DiePrinzessin.jpg',
-        '2019ZitronenT.jpg',
-        '2019Abflug1.jpeg',
-        '2019SaturdayNightschabeltier.jpeg',
-        '2022DieVerwandelung.JPG',
-        '2021HundiimSchnee.jpeg',
-        '2021DalliDalli.jpg',
-        '2019NellyDix.jpg',
+        'Armknospen Beinknospen, 2019.jpg',
+        'Dalli Dalli, 2021.jpg',
+        'dam Dam Dam DAM, 2021.jpg',
+        'Der Fleck, 2021.jpg',
+        'Der Lenz, 2020.jpg',
+        'Die Prinzessin, 2019.jpg',
+        'Die Verwandelung, 2022.jpg',
+        'Diving Dumbo, 2019.jpg',
+        'Eleganza Extravaganza, 2019.jpeg',
+        'Hundi im Schnee, 2021.jpg',
+        'Ich Wünsch Mirne Kleine Miezekatze, 2019.jpg',
+        'Im Hohen Grass, 2019.jpg',
+        'Kalter aus Oberohrn, 2023.jpg',
+        'Käshof, 2023.jpg',
+        'Lemberg im Frühling, Winter, 2020.jpg',
+        'Ludwig und Ich, 2018.jpg',
+        'Miss Chilifee, 2019.jpg',
+        'Nelly Dix, 2019.jpg',
+        'Pommes Schranke, 2020.jpg',
+        'Prinzesschen auf dem Gürkchen, 2019.jpg',
+        'Prinzessin, 2019.jpg',
+        'Rakete, 2019.jpg',
         'received_10201527586789453.jpg',
-        '2022RuhevordemBOF.JPG',
-        '2021DerFleck.jpeg',
-        '2019Rakete.jpeg',
-        '2019ImHohenGrass.jpeg'
+        'Ruhe vor dem BOF, 2022.jpg',
+        'Saturday Nightschabeltier, 2019.jpg',
+        'scan0139.jpg',
+        'scan0140.jpg',
+        'Space Sofa 2017.jpg',
+        'Sucht, 2019.jpg',
+        'Wunder, 2019.jpg',
+        'Zitronen T, 2019.jpg'
     ];
 
     imageFiles.forEach((file) => {
@@ -70,7 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Image click event for popup
         img.addEventListener('click', () => {
             popupImg.src = img.src;
-            popupTitle.textContent = file;  // Set the image name as the title
+            popupTitle.textContent = file
+                .replace(/\.[^/.]+$/, '')  // Remove file extension
+                .replace(/_/g, ' ')         // Replace underscores with spaces
+                .replace(/(\d{4})/, '$1 '); // Add space after year if present
             popup.classList.add('active');  // Show popup
         });
     });
