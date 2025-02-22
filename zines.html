@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zines - Runa Pohl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/zines.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="RUNA POHL" class="header-logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="illustrations.html">Illustrationen</a></li>
+            <li><a href="zines.html" class="active">Zines</a></li>
+            <li><a href="originale.html">Originale</a></li>
+            <li><a href="ausstellungen.html">Ausstellungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="page-content-wrapper">
+        <main class="zines-grid" id="zinesGrid">
+            <!-- Zines will be loaded here dynamically -->
+        </main>
+    </div>
+
+    <!-- Flip Book Modal -->
+    <div id="flipBookModal" class="flip-book-modal">
+        <div class="flip-book-container">
+            <div class="flip-book" id="flipBook">
+                <!-- Pages will be loaded here -->
+            </div>
+            <div class="flip-book-controls">
+                <button id="prevPage">&lt;</button>
+                <span id="pageNumber">Page 1 of 17</span>
+                <button id="nextPage">&gt;</button>
+            </div>
+            <button id="closeFlipBook" class="close-button">&times;</button>
+        </div>
+    </div>
+
+    <footer class="copyright-footer">
+        © 2025 Runa Pohl. All Rights Reserved.
+    </footer>
+
+    <script src="scripts/load-zines.js"></script>
+    <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) { 
+            e.preventDefault(); 
+        }, false);
+    </script>
+</body>
+</html>

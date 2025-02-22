@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Diving Dumbo, 2019.jpg',
         'Eleganza Extravaganza, 2019.jpeg',
         'Hundi im Schnee, 2021.jpg',
-        'Ich Wünsch Mirne Kleine Miezekatze, 2019.jpg',
+        'Ich wünsche mir ne kleine Miezekatze, 2020.jpg',
         'Im Hohen Grass, 2019.jpg',
         'Kalter aus Oberohrn, 2023.jpg',
         'Käshof, 2023.jpg',
@@ -58,7 +58,39 @@ document.addEventListener('DOMContentLoaded', function() {
         'Space Sofa 2017.jpg',
         'Sucht, 2019.jpg',
         'Wunder, 2019.jpg',
-        'Zitronen T, 2019.jpg'
+        'Zitronen T, 2019.jpg',
+
+        'Postkarte R4 Weihnachten, 2020.jpg',
+        'Lustiges Viechi, 2017.jpg',
+        'Nur Gschwind Ins Dorf, 2017.jpg',
+        'Wurstrakete, 2018.jpg',
+        'Blinky, 2019.jpg',
+        'Saint Luna, 2015.jpg',
+
+        'Crawl, Inktober 2020.jpeg',
+        'Fish, Inktober 2020.jpeg',
+        'Wisp, 2 Inktober2020.jpeg',
+        'Radio, Inktober 2020.jpeg',
+        'Rodent, Inktober 2020.jpg',
+        'Fancy, Inktober 2020.jpg',
+        'Teeth, Inktober 2020.jpg',
+        'Throw, Inktober 2020.jpg',
+        'Hope, Inktober 2020.jpg',
+        'Disgusting, Inktober 2020.jpg',
+        'Slippery, Inktober 2020.jpg',
+        'Outpost, Inktober 2020.jpg',
+        'Storm, Inktober 2020.jpg',
+        'Trap, Inktober 2020.jpg',
+        'Dizzy, Inktober 2020.jpg',
+        'Chef, Inktober 2020.jpg',
+        'Rip, Inktober 2020.jpeg',
+        'Buddy, Inktober 2020.jpeg',
+        'Hide, Inktober 2020.jpeg',
+        'Music, Inktober 2020.jpeg',
+        'Float, Inktober 2020.jpeg',
+        'Shoes, Inktober 2020.jpeg',
+        'Ominous, Inktober 2020.jpeg'
+
     ];
 
     imageFiles.forEach((file) => {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Originale - Runa Pohl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="RUNA POHL" class="header-logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="illustrations.html">Illustrationen</a></li>
+            <li><a href="zines.html">Zines</a></li>
+            <li><a href="originale.html"class="active">Originale</a></li>
+            <li><a href="ausstellungen.html">Ausstellungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="page-content-wrapper">
+        <main class="illustrations-grid" id="illustrationsGrid">
+            <!-- Images will be loaded here dynamically -->
+        </main>
+    </div>
+
+<!-- Popup for Image -->
+<div id="popup" class="popup">
+    <img id="popup-img" src="" alt="Popup Image" />
+    <div id="popup-title"></div>  <!-- Title will be shown here -->
+</div>
+
+    <script src="scripts/load-originals.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headerTitle = document.querySelector('header h1');
+            headerTitle.addEventListener('click', function() {
+                window.location.href = 'index.html?menu=true';
+            });
+        });
+    </script>
+    <footer class="copyright-footer">
+        © 2025 Runa Pohl. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) { 
+            e.preventDefault(); 
+        }, false);
+    </script>
+
+
+</body>
+</html>

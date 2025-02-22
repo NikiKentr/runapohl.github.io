@@ -431,3 +431,42 @@ nav ul li a.active {
     color: #666;
     z-index: 1000;
 }
+
+
+
+.zines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.zine-preview {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.zine-preview:hover {
+    transform: translateY(-5px);
+}
+
+.zine-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.zine-title {
+    margin-top: 1rem;
+    text-align: center;
+    color: #dd5030;
+    font-weight: bold;
+}
+
