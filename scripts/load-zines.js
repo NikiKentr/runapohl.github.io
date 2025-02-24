@@ -16,11 +16,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Define zines with their pages
     const zines = [
         {
+            title: "Abflug, 2020",
+            folder: "Abglug",
+            preview: "preview1.jpg",  // Using first page as preview
+            pages: Array.from({length: 1}, (_, i) => `page${i + 1}.jpg`) // Generates array of 24 pages
+        },
+
+
+        {
             title: "Rufus die Weihnachtsmaus",
             folder: "Rufus die Weihnachtsmaus",
             preview: "page1.jpg",  // Using first page as preview
-            pages: Array.from({length: 18}, (_, i) => `page${i + 1}.jpg`) // Generates array of 24 pages
+            pages: Array.from({length: 17}, (_, i) => `page${i + 1}.jpg`) // Generates array of 24 pages
+        },
+
+        {
+            title: "Coronacomic, 2020",
+            folder: "Coronacomic",
+            preview: "preview1.jpg",  // Using first page as preview
+            pages: Array.from({length: 1}, (_, i) => `page${i + 1}.png`) // Generates array of 24 pages
+        },
+
+        {
+            title: "Hasi & Ute",
+            folder: "Hasi & Ute",
+            preview: "preview1.jpg",  // Using first page as preview
+            pages: Array.from({length: 7}, (_, i) => `page${i + 1}.jpg`) // Generates array of 24 pages
         }
+
+        
         // Add more zines here as needed
     ];
 
@@ -84,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         flipBook.appendChild(img);
         
-        pageNumber.textContent = `Page ${currentPage + 1} of ${currentZine.pages.length}`;
+        pageNumber.textContent = `${currentPage + 1} / ${currentZine.pages.length}`;
         
         prevButton.disabled = currentPage === 0;
         nextButton.disabled = currentPage === currentZine.pages.length - 1;

@@ -1,0 +1,5 @@
+permalink: pretty
+title: Runa Pohl
+url: https://runapohl.de
+baseurl: ""
+exclude: [README.md]

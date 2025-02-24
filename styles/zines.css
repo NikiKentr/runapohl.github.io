@@ -1,40 +1,58 @@
 .zines-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
     padding: 2rem;
-    width: 95%;
-    max-width: 1400px;
+    width: 70%;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .zine-preview {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    background: white;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: none;
+    box-shadow: none;
 }
 
-.zine-preview:hover {
-    transform: translateY(-5px);
+.zine-preview {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    height: 100%;
 }
 
 .zine-preview img {
     width: 100%;
-    height: auto;
+    height: 400px;
+    object-fit: contain;
     display: block;
 }
 
 .zine-title {
     margin-top: 1rem;
     text-align: center;
-    color: #dd5030;
-    font-weight: bold;
+    color: #666666;
+    font-weight: normal;
 }
 
-/* Flip Book Modal */
+/* Reset all potentially rounded elements */
+.flip-book-modal,
+.flip-book-container,
+.flip-book,
+.flip-book img,
+.flip-book-modal img,
+#flipBook img,
+.zines-grid img {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+}
+
+/* Ensure no rounded corners on the modal */
 .flip-book-modal {
     display: none;
     position: fixed;
@@ -54,11 +72,11 @@
 
 .flip-book-container {
     position: relative;
-    width: 90%;
-    max-width: 1200px;
-    height: 80vh;
+    width: 95%;
+    max-width: 1800px;
+    height: 95vh;
     background: white;
-    padding: 2rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
 }
@@ -69,21 +87,32 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
-.flip-book img {
+/* Ensure all images inside flip-book and preview have sharp corners */
+.flip-book img,
+#flipBook img,
+.zines-grid img {
+    max-height: calc(95vh - 40px);
     max-width: 95%;
-    max-height: 90vh;
+    width: auto;
     object-fit: contain;
+    margin: auto;
+    overflow: visible;
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
 }
 
+/* Flip-book controls: Reduce space between controls and image */
 .flip-book-controls {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    padding: 1rem 0;
+    gap: 0.5rem;
+    padding: 0.025rem 0;
+    margin-top: 0.025rem;
 }
 
 .flip-book-controls button {
@@ -113,12 +142,25 @@
 #pageNumber {
     color: #666;
     font-size: 1rem;
+    min-width: 80px;
+    text-align: center;
 }
 
+/* Ensure no movement on hover, just opacity change */
+.zines-grid > * {
+    transition: opacity 0.3s ease !important;
+}
+
+.zines-grid > *:hover {
+    opacity: 0.7;
+    transform: none !important;
+}
+
+/* Close button */
 .close-button {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.5rem;
+    right: 0.5rem;
     background: none;
     border: none;
     color: #dd5030;
@@ -131,8 +173,27 @@
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s ease;
+    z-index: 1;
 }
 
 .close-button:hover {
     opacity: 0.7;
+}
+
+/* Force no rounded corners on any images inside the modal */
+#flipBookModal img {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px) {
+    .flip-book-container {
+        height: 95vh;
+    }
+   
+    .flip-book img {
+        max-height: calc(95vh - 40px);
+    }
 }

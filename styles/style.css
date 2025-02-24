@@ -81,7 +81,7 @@ nav ul li a {
     text-decoration: none;
     color: #dd5030;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: normal;
     transition: all 0.3s ease;
     font-family: 'Barlow', sans-serif;
 }
@@ -161,7 +161,7 @@ nav ul li a.active {
     text-decoration: none;
     color: #dd5030;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: normal;
     transition: all 0.3s ease;
     font-family: 'Barlow', sans-serif;
 }
