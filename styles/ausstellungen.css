@@ -1,0 +1,338 @@
+/* ============================
+   EXHIBITIONS LIST PAGE STYLES
+   ============================ */
+
+   .ausstellungen-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.ausstellungen-container h1 {
+    margin-bottom: 2rem;
+    color: #f4a195;
+    font-weight: normal;
+    font-size: 2.2rem;
+    margin-left: 2rem;
+}
+
+.ausstellung-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.ausstellung-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.ausstellung-title {
+    padding: 1.2rem 2rem;
+    background-color: white;
+    color: #585858;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.ausstellung-item:hover .ausstellung-title {
+    background-color: #f4a29544;
+}
+
+.ausstellung-preview {
+    display: flex;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    background-color: #f4a29544;
+    padding-left: 2rem;
+    margin-left: 0rem;
+    cursor: pointer;
+}
+
+.ausstellung-item:hover .ausstellung-preview {
+    opacity: 1;
+    height: 400px;
+}
+
+.preview-image {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.preview-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.ausstellung-item:hover .preview-image img {
+    transform: scale(1.02);
+}
+
+.preview-text {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-text p {
+    margin-bottom: 0rem;
+    line-height: 1.4;
+    color: #585858;
+}
+
+/* Add this to your ausstellungen.css file */
+.ausstellung-item .location-text {
+    font-size: 1.2rem; /* Increased from default */
+    font-weight: normal; /* Explicitly setting normal weight (not bold) */
+    color: #585858;
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* For the exhibition detail page */
+.ausstellung-header .location-text {
+    font-size: 1.5rem; /* Slightly bigger than on list page */
+    font-weight: normal;
+    color: #3b3b3b;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* ============================
+   EXHIBITION DETAIL PAGE STYLES
+   ============================ */
+
+.ausstellung-detail {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.ausstellung-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.ausstellung-header h1 {
+    color: #f4a195;
+    margin-bottom: 0.5rem;
+}
+
+.ausstellung-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.ausstellung-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ausstellung-description {
+    width: 100%;
+    max-width: 985px;
+    margin: 0 auto;
+    color: #3f3f3f;
+}
+
+.ausstellung-description p {
+    text-align: justify;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Hide legacy elements */
+.ausstellung-gallery, 
+.ausstellung-detail h2 {
+    display: none;
+}
+
+/* ============================
+   SLIDESHOW STYLES
+   ============================ */
+
+.slideshow-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 2rem auto;
+    position: relative;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide.active {
+    display: flex;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: #f4a195;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 10;
+    border: none;
+    transition: color 0.3s;
+    padding: 10px;
+}
+
+.prev:hover, .next:hover {
+    color: #f4a2953d;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* ============================
+   IMAGE POPUP STYLES
+   ============================ */
+
+.image-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.664);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-popup.active {
+    display: flex;
+}
+
+.popup-content {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.popup-prev, .popup-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10000;
+    border: none;
+    transition: color 0.3s;
+    padding: 15px;
+}
+
+.popup-prev:hover, .popup-next:hover {
+    color: #f4a195;
+}
+
+.popup-prev {
+    left: 20px;
+}
+
+.popup-next {
+    right: 20px;
+}
+
+.popup-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    color: white;
+    font-size: 40px;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+    transition: color 0.3s;
+}
+
+.popup-close:hover {
+    color: #f4a195;
+}
+
+.clickable-image {
+    cursor: pointer;
+}
+
+/* ============================
+   RESPONSIVE ADJUSTMENTS
+   ============================ */
+
+@media (max-width: 768px) {
+    .ausstellung-preview {
+        flex-direction: column;
+    }
+    
+    .ausstellung-item:hover .ausstellung-preview {
+        height: auto;
+    }
+    
+    .preview-image, .preview-text {
+        width: 100%;
+    }
+    
+    .preview-image {
+        height: 200px;
+    }
+    
+    .slide {
+        height: 400px;
+    }
+    
+    .prev, .next {
+        font-size: 24px;
+        padding: 5px;
+    }
+}

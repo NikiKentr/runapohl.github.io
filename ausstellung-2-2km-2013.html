@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2,2km 2013 - Runa Pohl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/ausstellungen.css">
+    <link rel="stylesheet" href="styles/ausstellung-detail-layout.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="RUNA POHL" class="header-logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="illustrations.html">Illustrationen</a></li>
+            <li><a href="zines.html">Zines</a></li>
+            <li><a href="originale.html">Originale</a></li>
+            <li><a href="ausstellungen.html" class="active">Ausstellungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="page-content-wrapper">
+        <div class="ausstellung-detail">
+            <div class="ausstellung-header">
+                <h1>2,2km 2013</h1>
+                <p>Kunstakademie Karlsruhe & KIT | März - April 2013</p>
+            </div>
+           
+            <!-- Slideshow section -->
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="images\ausstellungen\2-2km-2013\k1.jpeg" alt="2,2km 2013 Main Image" class="clickable-image">
+                </div>
+                <div class="slide">
+                    <img src="images\ausstellungen\2-2km-2013\k2.jpeg" alt="2,2km 2013 Main Image" class="clickable-image">
+                </div>
+               
+                <!-- Navigation buttons -->
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+            </div>
+           
+            <div class="ausstellung-content">
+                <div class="ausstellung-description">
+                    <p>Die Ausstellung "2,2km" war ein besonderes Kooperationsprojekt zwischen der Kunstakademie Karlsruhe und dem Karlsruher Institut für Technologie (KIT). Der Titel bezieht sich auf die tatsächliche Distanz zwischen den beiden Institutionen.</p>
+                   
+                    <p>Das Projekt wurde von Runa Pohl während ihres Studiums am KIT mitorganisiert und co-kuratiert. Ziel war es, einen Dialog zwischen Kunststudierenden und Studierenden der Kunst- und Kulturwissenschaften zu initiieren und die Verbindung zwischen künstlerischer Praxis und theoretischer Reflexion zu stärken.</p>
+                   
+                    <p>Die Ausstellung fand an beiden Standorten statt und umfasste Arbeiten von Studierenden beider Institutionen. Die Werke reichten von Malerei und Skulptur bis hin zu Video- und Klanginstallationen und reflektierten die unterschiedlichen Perspektiven auf Kunst und deren wissenschaftliche Betrachtung. Begleitend zur Ausstellung fanden Künstlergespräche, Workshops und Führungen statt, die den Austausch zwischen den beiden Institutionen förderten und neue Formen der Zusammenarbeit etablierten.</p>
+                   
+                    <p>Für weitere Informationen zur Ausstellung besuchen Sie die folgende <a href="https://kavantgar.de/interview-22km-vernissage-und-austellung/" target="_blank">URL</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- Popup for full-screen images -->
+    <div id="imagePopup" class="image-popup">
+        <div class="popup-content">
+            <img id="popupImage" src="" alt="Vergrößerte Ansicht">
+            <button class="popup-prev">&#10094;</button>
+            <button class="popup-next">&#10095;</button>
+            <button class="popup-close">&times;</button>
+        </div>
+    </div>
+   
+    <footer class="copyright-footer">
+        © 2025 Runa Pohl. All Rights Reserved.
+    </footer>
+   
+    <script src="scripts/exhibition-slideshow.js"></script>
+    <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }, false);
+    </script>
+</body>
+</html>

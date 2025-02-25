@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ars-Connectit-Festival 2024 - Runa Pohl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/ausstellungen.css">
+    <link rel="stylesheet" href="styles/ausstellung-detail-layout.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="RUNA POHL" class="header-logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="illustrations.html">Illustrationen</a></li>
+            <li><a href="zines.html">Zines</a></li>
+            <li><a href="originale.html">Originale</a></li>
+            <li><a href="ausstellungen.html" class="active">Ausstellungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="page-content-wrapper">
+        <div class="ausstellung-detail">
+            <div class="ausstellung-header">
+                <h1>Ars-Connectit-Festival 2023</h1>
+                <p>Hohenloher Freilandmuseum, Schwäbisch Hall | Juni - September 2023</p>
+            </div>
+            
+            <!-- Slideshow section -->
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="images/ausstellungen/ArsConnectit-2023/ars Conectit 2023.jpg" alt="Ars-Connectit-Festival 2024 Main Image" class="clickable-image">
+                </div>
+                
+                <!-- Navigation buttons -->
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+            </div>
+            
+            <div class="ausstellung-content">
+                <div class="ausstellung-description">
+                    <p>Das Ars-Connectit-Festival 2023 im Hohenloher Freilandmuseum in Schwäbisch Hall war eine sorgfältig kuratierte Ausstellung, die zeitgenössische Kunst in Verbindung mit historischer Architektur und natürlicher Landschaft brachte.</p>
+                    
+                    <p>Unter dem Motto "Verbindungen" wurden Künstlerinnen und Künstler eingeladen, Werke zu schaffen, die einen Dialog zwischen Gegenwart und Vergangenheit, zwischen urbanem und ländlichem Raum sowie zwischen Mensch und Natur herstellen.</p>
+                    
+                    <p>Runa Pohl präsentierte hier.....</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Popup for full-screen images -->
+    <div id="imagePopup" class="image-popup">
+        <div class="popup-content">
+            <img id="popupImage" src="" alt="Vergrößerte Ansicht">
+            <button class="popup-prev">&#10094;</button>
+            <button class="popup-next">&#10095;</button>
+            <button class="popup-close">&times;</button>
+        </div>
+    </div>
+    
+    <footer class="copyright-footer">
+        © 2025 Runa Pohl. All Rights Reserved.
+    </footer>
+    
+    <script src="scripts/exhibition-slideshow.js"></script>
+    <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) { 
+            e.preventDefault(); 
+        }, false);
+    </script>
+</body>
+</html>

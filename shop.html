@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Runa Pohl</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .coming-soon-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
+        }
+        
+        .coming-soon-text {
+            font-size: 2.2rem;
+            color: #f4a195;
+            margin-bottom: 1rem;
+        }
+        
+        .stay-tuned-text {
+            font-size: 1.4rem;
+            color: #3b3b3b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="RUNA POHL" class="header-logo">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">Über mich</a></li>
+            <li><a href="illustrations.html">Illustrationen</a></li>
+            <li><a href="zines.html">Zines</a></li>
+            <li><a href="originale.html">Originale</a></li>
+            <li><a href="ausstellungen.html">Ausstellungen</a></li>
+            <li><a href="contact.html">Kontakt</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="page-content-wrapper">
+        <div class="coming-soon-container">
+            <div class="coming-soon-text">Demnächst verfügbar...</div>
+            <div class="stay-tuned-text">Bleiben Sie dran!</div>
+        </div>
+    </div>
+    
+    <footer class="copyright-footer">
+        © 2025 Runa Pohl. All Rights Reserved.
+    </footer>
+    
+    <script>
+        // Prevent right-click context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }, false);
+    </script>
+</body>
+</html>
