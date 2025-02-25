@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://runapohl.com/index.html</loc>
+    <loc>https://runapohl.de/index.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/about.html</loc>
+    <loc>https://runapohl.de/about.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/illustrations.html</loc>
+    <loc>https://runapohl.de/illustrations.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/zines.html</loc>
+    <loc>https://runapohl.de/zines.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/originale.html</loc>
+    <loc>https://runapohl.de/originale.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/ausstellungen.html</loc>
+    <loc>https://runapohl.de/ausstellungen.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/contact.html</loc>
+    <loc>https://runapohl.de/contact.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/shop.html</loc>
+    <loc>https://runapohl.de/shop.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- Add additional pages for your exhibition detail pages -->
+  <!-- Exhibition detail pages -->
   <url>
-    <loc>https://runapohl.com/ausstellung-ars-connectit-2024.html</loc>
-    <lastmod>2025-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://runapohl.com/ausstellung-ars-connectit-2023.html</loc>
+    <loc>https://runapohl.de/ausstellung-ars-connectit-2024.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://runapohl.com/ausstellung-2-2km-2013.html</loc>
+    <loc>https://runapohl.de/ausstellung-ars-connectit-2023.html</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://runapohl.de/ausstellung-2-2km-2013.html</loc>
     <lastmod>2025-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
