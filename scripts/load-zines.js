@@ -15,6 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Define zines with their pages
     const zines = [
+
+        {
+            title: "EINS VON ALLEM",
+            folder: "EINS_VON_ALLEM_1",
+            preview: "Untitled(3).gif",  // Using first page as preview
+            pages: Array.from({length: 3}, (_, i) => `page${i + 1}.jpg`) // Generates array of 24 pages
+        },
+
+        {
+            title: "EINS VON ALLEM 2",
+            folder: "EINS_VON_ALLEM_2",
+            preview: "PREVIEW_1.gif",  // Using first page as preview
+            pages: Array.from({length: 3}, (_, i) => `page${i + 1}.jpg`) // Generates array of 24 pages
+        },
+
+
         {
             title: "Abflug, 2020",
             folder: "Abglug",
