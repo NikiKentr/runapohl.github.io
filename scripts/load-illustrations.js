@@ -27,6 +27,20 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
+    // Helper function to get the base URL for GitHub Pages
+    const getBaseUrl = () => {
+        const pathSegments = window.location.pathname.split('/');
+        // If it's a project site (username.github.io/repo-name)
+        if (window.location.hostname.endsWith('github.io') && pathSegments.length > 1 && pathSegments[1] !== '') {
+            return '/' + pathSegments[1];
+        }
+        // If it's a user/org site (username.github.io)
+        return '';
+    };
+    
+    const baseUrl = getBaseUrl();
+
+
 
     const imageFiles = [
         'Armknospen Beinknospen, 2019.jpg',
