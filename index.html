@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Runa Pohl - Artist and Illustrator based in Schwäbisch Hall, Germany. Showcasing illustrations, zines, and original artwork.">
-    <meta name="keywords" content="Runa Pohl, artist, illustrator, zines, Schwäbisch Hall, German artist, contemporary art, mixed media, performance art, illustration, graphic design, visual art, kunstzine, künstlerische praxis, experimentelle kunst, handgemachte kunst, künstlerbuch, bildende kunst, kunstausstellung, kunstprojekt, creative illustration, storytelling art, contemporary illustration, dada inspiration, autobiographical art, kunst und kultur, creative design, artwork, original art, kunstwerk, kunstsammlung, kunstpublikation, experimental design, narrative illustration">
+    <meta name="keywords" content="Runa Pohl, artist, illustrator, zines">
     <style>
         body, html {
             margin: 0;
@@ -18,6 +18,7 @@
             width: 100%;
             font-family: 'Barlow', sans-serif;
             background: white;
+            overflow: hidden; /* Prevent scrolling */
         }
         
         .container {
@@ -28,7 +29,8 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
-            min-height: 100vh;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Prevent internal scrolling */
         }
         
         .logo {
@@ -120,10 +122,55 @@
         }
         
         @media (max-width: 768px) {
-            .menu ul {
-                flex-wrap: wrap;
+            body, html {
+                overflow: hidden; /* Prevent scrolling */
+            }
+            
+            .container {
                 justify-content: center;
-                gap: 20px;
+                padding: 0 20px;
+            }
+            
+            .logo {
+                margin-bottom: 20px; /* Reduced from 60px */
+            }
+            
+            .logo img {
+                width: 80px; /* Reduced from 120px */
+            }
+            
+            .menu {
+                margin-top: 15px; /* Reduced from 30px */
+                margin-bottom: 20px; /* Reduced from 40px */
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 3px; /* Very small gap for mobile */
+            }
+            
+            .featured-image {
+                width: 90%;
+                max-width: 600px;
+            }
+            
+            .menu ul li a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 3px 0;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .featured-image {
+                width: 95%;
+                max-width: 400px;
+            }
+            
+            .menu ul li a {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -160,6 +207,11 @@
         document.addEventListener('contextmenu', function(e) { 
             e.preventDefault(); 
         }, false);
+
+        // Prevent scrolling
+        document.body.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 
     <script>

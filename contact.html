@@ -72,18 +72,28 @@
         @media (max-width: 1024px) {
             .contact-container {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 0.5rem;
             }
             
             .contact-image {
-                max-width: 100%;
+                max-width: 60%;
                 order: 1;
+                margin-bottom: 0px;
+                padding-top: 0px;
+                padding-bottom: 0px;
             }
             
             .contact-details {
                 order: 2;
-                text-align: center;
+                text-align: left;
+                font-size: 1rem;
             }
+            .contact-details p {
+            font-size: 1.1rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #585858;
+        }
         }
     </style>
 </head>

@@ -179,6 +179,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const closeBtn = imagePopup.querySelector('.popup-close');
         const prevBtn = imagePopup.querySelector('.popup-prev');
         const nextBtn = imagePopup.querySelector('.popup-next');
+        const popupContent = imagePopup.querySelector('.popup-content');
+
+        
+
+        // Close popup on click outside the image content
+imagePopup.addEventListener('click', function(e) {
+    if (!popupContent.contains(e.target)) {
+        imagePopup.classList.remove('active');
+    }
+});
+
+        // Close popup on background click or clicking outside the image
+        imagePopup.addEventListener('click', function(e) {
+            if (e.target === imagePopup || !e.target.closest('.popup-content')) {
+                imagePopup.classList.remove('active');
+            }
+        });
         
         if (closeBtn) {
             closeBtn.addEventListener('click', function() {
@@ -220,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Close popup on background click
         imagePopup.addEventListener('click', function(e) {
-            if (e.target === imagePopup) {
+            if (e.target === imagePopup || !e.target.closest('.popup-content')) {
                 imagePopup.classList.remove('active');
             }
         });
