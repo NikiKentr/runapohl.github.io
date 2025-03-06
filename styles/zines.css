@@ -1,7 +1,7 @@
 .zines-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    gap: 6rem;
     padding: 2rem;
     width: 70%;
     max-width: 1100px;
@@ -23,6 +23,8 @@
     background: none;
     box-shadow: none;
     height: 100%;
+    border: 1.5px solid #f4a195; /* Light gray border */
+    border-radius: 4px; /* Optional: Adds rounded corners */
 }
 
 .zine-preview img {
@@ -35,8 +37,9 @@
 .zine-title {
     margin-top: 1rem;
     text-align: center;
-    color: #666666;
+    color: #f4a195;
     font-weight: normal;
+    margin-bottom: 1rem;
 }
 
 /* Reset all potentially rounded elements */
@@ -196,4 +199,73 @@
     .flip-book img {
         max-height: calc(95vh - 40px);
     }
+}
+
+@media (max-width: 768px) {
+    .page-content-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .zines-grid {
+        padding-top: 0; /* Remove any top padding */
+        margin-top: 0; /* Remove any margin */
+    }
+}
+
+@media (max-width: 768px) { /* Adjust for mobile screens */
+    .zines-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamic columns */
+        gap: 0.5rem;
+        padding: 2rem;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .zine-preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    /* Different heights for the mosaic effect */
+    .zine-preview:nth-child(odd) {
+        grid-row: span 2; /* Some items take up more space */
+    }
+    
+    .zine-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Makes the mosaic look uniform */
+    }
+
+    .zines-grid {
+        column-count: 3; /* Adjust for more/less columns */
+        column-gap: 1rem;
+    }
+    
+    .zine-preview {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .zine-preview img {
+        width: 100%;
+        height: auto; /* Keeps aspect ratio */
+    }
+
+    .zine-title {
+        margin-top: 0.5rem;
+        text-align: center;
+        color: #f4a195;
+        font-weight: normal;
+        margin-bottom: 0.5rem;
+    }
+    
+    
+    
 }
