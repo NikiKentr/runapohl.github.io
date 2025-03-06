@@ -1,141 +1,263 @@
-/**
- * Exhibition slideshow and popup image functionality
- * Handles both regular slideshow navigation and fullscreen image popup with navigation
- */
 document.addEventListener('DOMContentLoaded', function() {
-    // Get DOM elements
-    const slides = document.querySelectorAll('.slide');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-    let currentSlide = 0;
-    
-    // Initialize popup if it doesn't exist
-    if (!document.getElementById('imagePopup')) {
-        createImagePopup();
-    }
-    
-    const imagePopup = document.getElementById('imagePopup');
+    // Get all slideshow elements
+    const slideshows = document.querySelectorAll('.slideshow-container');
     const popupImage = document.getElementById('popupImage');
-    const popupCloseBtn = document.querySelector('.popup-close');
-    const popupPrevBtn = document.querySelector('.popup-prev');
-    const popupNextBtn = document.querySelector('.popup-next');
+    const imagePopup = document.getElementById('imagePopup');
     
-    // Add clickable class to all slideshow images
-    slides.forEach(slide => {
-        const img = slide.querySelector('img');
-        if (img && !img.classList.contains('clickable-image')) {
-            img.classList.add('clickable-image');
+    // Helper function to get the base URL for GitHub Pages
+    const getBaseUrl = () => {
+        const pathSegments = window.location.pathname.split('/');
+        // If it's a project site (username.github.io/repo-name)
+        if (window.location.hostname.endsWith('github.io') && pathSegments.length > 1 && pathSegments[1] !== '') {
+            return '/' + pathSegments[1];
         }
+        // If it's a user/org site (username.github.io)
+        return '';
+    };
+    
+    const baseUrl = getBaseUrl();
+    
+    // Check for WebP support
+    const supportsWebP = (function() {
+        const elem = document.createElement('canvas');
+        if (elem.getContext && elem.getContext('2d')) {
+            return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+        }
+        return false;
+    })();
+    
+    // Get appropriate image size suffix based on screen width
+    function getSizeSuffix() {
+        const width = window.innerWidth;
+        if (width <= 480) return '-sm';  // Small screens
+        if (width <= 1024) return '-md'; // Medium screens
+        return '-lg';                     // Large screens
+    }
+    
+    // Prepare for lazy loading
+    slideshows.forEach(function(slideshow) {
+        const slides = slideshow.querySelectorAll('.slide');
+        const prevBtn = slideshow.querySelector('.prev');
+        const nextBtn = slideshow.querySelector('.next');
+        
+        let currentSlide = 0;
+        
+        // Set up lazy loading for slide images
+        slides.forEach(function(slide, index) {
+            const img = slide.querySelector('img');
+            
+            // If this is an image to be lazy loaded
+            if (img && !img.src.startsWith('data:')) {
+                // Store original src in data-src
+                img.dataset.src = img.src;
+                
+                // Use a placeholder
+                img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+                
+                // Add loading class
+                img.classList.add('lazy-slide-image');
+            }
+        });
+        
+        // Function to show a specific slide
+        function showSlide(n) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Normalize slide index
+            currentSlide = (n + slides.length) % slides.length;
+            
+            // Show the current slide
+            slides[currentSlide].classList.add('active');
+            
+            // Load the current slide image if it hasn't been loaded yet
+            const currentImg = slides[currentSlide].querySelector('img.lazy-slide-image');
+            if (currentImg && currentImg.dataset.src) {
+                loadOptimizedImage(currentImg);
+            }
+            
+            // Preload next and previous slide images
+            const nextIndex = (currentSlide + 1) % slides.length;
+            const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+            
+            // Preload next slide
+            const nextImg = slides[nextIndex].querySelector('img.lazy-slide-image');
+            if (nextImg && nextImg.dataset.src) {
+                setTimeout(() => {
+                    loadOptimizedImage(nextImg);
+                }, 300);
+            }
+            
+            // Preload previous slide
+            const prevImg = slides[prevIndex].querySelector('img.lazy-slide-image');
+            if (prevImg && prevImg.dataset.src) {
+                setTimeout(() => {
+                    loadOptimizedImage(prevImg);
+                }, 600);
+            }
+        }
+        
+        // Function to load an optimized image
+        function loadOptimizedImage(img) {
+            if (!img || !img.dataset.src) return;
+            
+            const originalPath = img.dataset.src;
+            const lastSlash = originalPath.lastIndexOf('/');
+            const directory = originalPath.substring(0, lastSlash);
+            const filename = originalPath.substring(lastSlash + 1);
+            
+            // Extract base name and extension
+            const lastDot = filename.lastIndexOf('.');
+            const baseName = filename.substring(0, lastDot);
+            const ext = filename.substring(lastDot);
+            
+            // Get size suffix and determine format
+            const sizeSuffix = getSizeSuffix();
+            const newExt = supportsWebP ? '.webp' : ext;
+            
+            // Try to load from optimized folder
+            const optimizedPath = `${directory}/optimized/${baseName}${sizeSuffix}${newExt}`;
+            
+            // Create a temporary image to test if optimized version exists
+            const tempImg = new Image();
+            tempImg.onload = function() {
+                // Optimized version exists, use it
+                img.src = optimizedPath;
+                img.classList.add('loaded');
+            };
+            tempImg.onerror = function() {
+                // Optimized version doesn't exist, fall back to original
+                img.src = originalPath;
+                img.classList.add('loaded');
+            };
+            tempImg.src = optimizedPath;
+            
+            // Remove data-src to prevent loading again
+            img.removeAttribute('data-src');
+        }
+        
+        // Add click events for navigation
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                showSlide(currentSlide - 1);
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                showSlide(currentSlide + 1);
+            });
+        }
+        
+        // Initialize with the first slide
+        showSlide(0);
+        
+        // Image popup functionality
+        const clickableImages = slideshow.querySelectorAll('.clickable-image');
+        clickableImages.forEach(function(img, index) {
+            img.addEventListener('click', function() {
+                // Get the loaded image URL (optimized or original)
+                let imgSrc = this.src;
+                if (imgSrc.startsWith('data:')) {
+                    // If image hasn't loaded yet, use the original source
+                    imgSrc = this.dataset.src;
+                }
+                
+                if (popupImage && imagePopup) {
+                    popupImage.src = imgSrc;
+                    imagePopup.classList.add('active');
+                    
+                    // Store current index for popup navigation
+                    popupImage.dataset.index = index;
+                }
+            });
+        });
     });
     
-    // Slideshow functionality
-    function showSlide(n) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        currentSlide = (n + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-    
-    // Navigation buttons for slideshow
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            showSlide(currentSlide - 1);
-        });
-    }
-    
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            showSlide(currentSlide + 1);
-        });
-    }
-    
-    // Image popup functionality
-    let currentPopupIndex = 0;
-    
-    // Attach click events to all slideshow images
-    const clickableImages = document.querySelectorAll('.clickable-image');
-    clickableImages.forEach((img, index) => {
-        img.addEventListener('click', function() {
-            openPopup(this.src, currentSlide);
-        });
-    });
-    
-    // Open popup with specific image
-    function openPopup(imageSrc, slideIndex) {
-        popupImage.src = imageSrc;
-        imagePopup.classList.add('active');
-        currentPopupIndex = slideIndex;
-    }
-    
-    // Popup navigation functions
-    function showPopupSlide(n) {
-        currentPopupIndex = (n + slides.length) % slides.length;
-        const img = slides[currentPopupIndex].querySelector('img');
-        popupImage.src = img.src;
-    }
-    
-    // Attach event listeners to popup elements
-    if (popupCloseBtn) {
-        popupCloseBtn.addEventListener('click', function() {
-            imagePopup.classList.remove('active');
-        });
-    }
-    
+    // Popup navigation
     if (imagePopup) {
+        const closeBtn = imagePopup.querySelector('.popup-close');
+        const prevBtn = imagePopup.querySelector('.popup-prev');
+        const nextBtn = imagePopup.querySelector('.popup-next');
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                imagePopup.classList.remove('active');
+            });
+        }
+        
+        if (prevBtn && nextBtn && popupImage) {
+            prevBtn.addEventListener('click', function() {
+                navigatePopup(-1);
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                navigatePopup(1);
+            });
+            
+            function navigatePopup(direction) {
+                const currentIndex = parseInt(popupImage.dataset.index || 0);
+                const slideshow = document.querySelector('.slideshow-container');
+                const images = slideshow.querySelectorAll('.clickable-image');
+                
+                // Calculate new index
+                let newIndex = (currentIndex + direction + images.length) % images.length;
+                
+                // Update popup image
+                const newImg = images[newIndex];
+                if (newImg) {
+                    let imgSrc = newImg.src;
+                    if (imgSrc.startsWith('data:')) {
+                        // If image hasn't loaded yet, use the original source
+                        imgSrc = newImg.dataset.src;
+                    }
+                    
+                    popupImage.src = imgSrc;
+                    popupImage.dataset.index = newIndex;
+                }
+            }
+        }
+        
+        // Close popup on background click
         imagePopup.addEventListener('click', function(e) {
             if (e.target === imagePopup) {
                 imagePopup.classList.remove('active');
             }
         });
-    }
-    
-    if (popupPrevBtn) {
-        popupPrevBtn.addEventListener('click', function() {
-            showPopupSlide(currentPopupIndex - 1);
-        });
-    }
-    
-    if (popupNextBtn) {
-        popupNextBtn.addEventListener('click', function() {
-            showPopupSlide(currentPopupIndex + 1);
-        });
-    }
-    
-    // Keyboard navigation for both slideshow and popup
-    document.addEventListener('keydown', function(e) {
-        if (imagePopup.classList.contains('active')) {
-            // Popup keyboard navigation
-            if (e.key === 'Escape') {
+        
+        // Close popup with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && imagePopup.classList.contains('active')) {
                 imagePopup.classList.remove('active');
-            } else if (e.key === 'ArrowLeft') {
-                showPopupSlide(currentPopupIndex - 1);
-            } else if (e.key === 'ArrowRight') {
-                showPopupSlide(currentPopupIndex + 1);
             }
-        } else {
-            // Slideshow keyboard navigation
-            if (e.key === 'ArrowLeft') {
-                showSlide(currentSlide - 1);
-            } else if (e.key === 'ArrowRight') {
-                showSlide(currentSlide + 1);
-            }
-        }
-    });
+        });
+    }
     
-    // Create image popup if not in the HTML
-    function createImagePopup() {
-        const popup = document.createElement('div');
-        popup.id = 'imagePopup';
-        popup.className = 'image-popup';
-        
-        popup.innerHTML = `
-            <div class="popup-content">
-                <img id="popupImage" src="" alt="Vergrößerte Ansicht">
-                <button class="popup-prev">&#10094;</button>
-                <button class="popup-next">&#10095;</button>
-                <button class="popup-close">&times;</button>
-            </div>
-        `;
-        
-        document.body.appendChild(popup);
+    // Handle window resize
+    window.addEventListener('resize', debounce(function() {
+        // Update images to use appropriate size
+        document.querySelectorAll('img.loaded').forEach(function(img) {
+            const src = img.src;
+            if (src && src.includes('/optimized/')) {
+                // Extract the base path without size suffix
+                const basePath = src.replace(/(-sm|-md|-lg)\.(jpg|jpeg|png|webp)$/, '');
+                const sizeSuffix = getSizeSuffix();
+                const ext = supportsWebP ? '.webp' : (src.endsWith('.webp') ? '.jpg' : src.substring(src.lastIndexOf('.')));
+                
+                // Update the source with new size
+                img.src = `${basePath}${sizeSuffix}${ext}`;
+            }
+        });
+    }, 250));
+    
+    // Utility function for debouncing
+    function debounce(func, wait) {
+        let timeout;
+        return function() {
+            const context = this;
+            const args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
     }
 });

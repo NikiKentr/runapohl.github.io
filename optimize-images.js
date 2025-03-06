@@ -8,9 +8,10 @@ const fs = require('fs');
 const config = {
     // Folders to process
     imageFolders: [
-        'images/illustrations',
-        'images/originals',
-        'images/zines'
+        //'images/illustrations',
+        //'images/originals',
+        //'images/zines',
+        'images/ausstellungen'
     ],
     // File extensions to process
     extensions: ['jpg', 'jpeg', 'png'],
@@ -40,8 +41,10 @@ async function processImage(imagePath) {
             fs.mkdirSync(outputDir, { recursive: true });
         }
         
-        // Create a sharp instance
-        let image = sharp(imagePath);
+        // Create a sharp instance with autorotate
+        let image = sharp(imagePath, { 
+            failOnError: false 
+        }).rotate(); // This preserves the original EXIF orientation
         
         // Get image metadata
         const metadata = await image.metadata();
