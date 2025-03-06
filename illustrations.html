@@ -12,6 +12,24 @@
     <title>Illustrations - Runa Pohl</title>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+
+    <style>
+        /* Image loading optimization styles */
+        .grid-item {
+            position: relative;
+            background-color: #f5f5f5; /* Light placeholder color */
+        }
+        
+        .grid-item img {
+            transition: opacity 0.3s ease;
+            will-change: opacity;
+        }
+        
+        .grid-item img:not([src]),
+        .grid-item img[src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="] {
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
