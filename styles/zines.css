@@ -34,6 +34,17 @@
     display: block;
 }
 
+.zine-preview:hover {
+    /* Remove any transform property */
+    opacity: 0.7; /* Only change opacity */
+}
+
+/* Make sure this rule only affects opacity */
+.zines-grid > *:hover {
+    opacity: 0.7;
+    transform: none !important; /* Ensure no movement */
+}
+
 .zine-title {
     margin-top: 1rem;
     text-align: center;
