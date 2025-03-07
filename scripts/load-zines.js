@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "EINS VON ALLEM 2",
             folder: "EINS_VON_ALLEM_2",
             preview: "PREVIEW_1.gif",
-            pages: Array.from({length: 5}, (_, i) => `page${i + 1}.JPG`)
+            pages: Array.from({length: 6}, (_, i) => `page${i + 1}.JPG`)
         },
         {
             title: "Abflug, 2020",
