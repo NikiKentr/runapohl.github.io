@@ -169,55 +169,85 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateFlipBook() {
         flipBook.innerHTML = '';
         const img = document.createElement('img');
-        const pagePath = encodeURI(`images/zines/${currentZine.folder}/${currentZine.pages[currentPage]}`);
+        
+        // Get base path without extension
+        const basePath = currentZine.pages[currentPage];
+        const basePathWithoutExt = basePath.substring(0, basePath.lastIndexOf('.')) || basePath;
+        const pagePath = encodeURI(`images/zines/${currentZine.folder}/${basePathWithoutExt}`);
         
         // Use data-src and placeholder
         img.dataset.src = pagePath;
         img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
         img.alt = `${currentZine.title} - Page ${currentPage + 1}`;
         
-        // Create a temporary image to test if optimized version exists
-        const tempImg = new Image();
-        tempImg.onload = function() {
-            // Extract file information for optimized path
-            const lastSlash = pagePath.lastIndexOf('/');
-            const directory = pagePath.substring(0, lastSlash);
-            const filename = pagePath.substring(lastSlash + 1);
-            
-            // Extract base name and extension
-            const lastDot = filename.lastIndexOf('.');
-            const baseName = filename.substring(0, lastDot);
-            const ext = filename.substring(lastDot);
-            
-            // Get size suffix and determine format
-            const sizeSuffix = getSizeSuffix();
-            const newExt = supportsWebP ? '.webp' : ext;
-            
-            // Try to load from optimized folder
-            const optimizedPath = `${directory}/optimized/${baseName}${sizeSuffix}${newExt}`;
-            
-            // Create another temporary image to test optimized version
-            const optimizedTempImg = new Image();
-            optimizedTempImg.onload = function() {
-                // Optimized version exists, use it
-                img.src = optimizedPath;
-            };
-            optimizedTempImg.onerror = function() {
-                // Optimized version doesn't exist, use original
-                img.src = pagePath;
-            };
-            optimizedTempImg.src = optimizedPath;
-        };
-        tempImg.onerror = function() {
-            debugLog(`Error loading page: ${pagePath}`);
-            flipBook.innerHTML = `
-                <div style="padding: 20px; text-align: center; color: red;">
-                    Error loading page ${currentPage + 1}
-                </div>`;
-        };
-        tempImg.src = pagePath;
+        // Create an array of possible extensions to try
+        const extensions = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG', '.gif', '.GIF'];
+        let currentExtIndex = 0;
         
-        flipBook.appendChild(img);
+        // Function to try loading with next extension
+        function tryNextExtension() {
+            if (currentExtIndex >= extensions.length) {
+                // All extensions failed, show error
+                flipBook.innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: red;">
+                        Error loading page ${currentPage + 1}<br>
+                        Could not find image with any standard extension
+                    </div>`;
+                return;
+            }
+            
+            const currentPath = pagePath + extensions[currentExtIndex];
+            debugLog(`Trying extension: ${extensions[currentExtIndex]}`);
+            
+            // Create a temporary image to test if this extension works
+            const tempImg = new Image();
+            tempImg.onload = function() {
+                // This extension works! Now try the optimized version
+                // Extract file information for optimized path
+                const lastSlash = currentPath.lastIndexOf('/');
+                const directory = currentPath.substring(0, lastSlash);
+                const filename = currentPath.substring(lastSlash + 1);
+                
+                // Extract base name and extension
+                const lastDot = filename.lastIndexOf('.');
+                const baseName = filename.substring(0, lastDot);
+                const ext = filename.substring(lastDot);
+                
+                // Get size suffix and determine format
+                const sizeSuffix = getSizeSuffix ? getSizeSuffix() : '';
+                const newExt = (typeof supportsWebP !== 'undefined' && supportsWebP) ? '.webp' : ext;
+                
+                // Try to load from optimized folder
+                const optimizedPath = `${directory}/optimized/${baseName}${sizeSuffix}${newExt}`;
+                
+                // Create another temporary image to test optimized version
+                const optimizedTempImg = new Image();
+                optimizedTempImg.onload = function() {
+                    // Optimized version exists, use it
+                    img.src = optimizedPath;
+                    flipBook.appendChild(img);
+                    debugLog(`Successfully loaded optimized: ${optimizedPath}`);
+                };
+                optimizedTempImg.onerror = function() {
+                    // Optimized version doesn't exist, use the version with this extension
+                    img.src = currentPath;
+                    flipBook.appendChild(img);
+                    debugLog(`Using non-optimized version: ${currentPath}`);
+                };
+                optimizedTempImg.src = optimizedPath;
+            };
+            
+            tempImg.onerror = function() {
+                // This extension didn't work, try the next one
+                currentExtIndex++;
+                tryNextExtension();
+            };
+            
+            tempImg.src = currentPath;
+        }
+        
+        // Start trying extensions
+        tryNextExtension();
         
         pageNumber.textContent = `${currentPage + 1} / ${currentZine.pages.length}`;
         
