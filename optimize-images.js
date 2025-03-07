@@ -10,11 +10,12 @@ const config = {
     imageFolders: [
         //'images/illustrations',
         //'images/originals',
-        //'images/zines',
-        'images/ausstellungen'
+        'images/zines/EINS_VON_ALLEM_1',
+        'images/zines/EINS_VON_ALLEM_2'
+        //'images/ausstellungen'
     ],
     // File extensions to process
-    extensions: ['jpg', 'jpeg', 'png'],
+    extensions: ['jpg', 'jpeg', 'png','JPG','gif'],
     // Output quality (1-100)
     quality: 80,
     // Size variations to create
