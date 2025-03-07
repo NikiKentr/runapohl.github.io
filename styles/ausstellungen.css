@@ -440,6 +440,18 @@
     }
 }
 
+.ausstellung-description {
+    /* Keep your existing styles */
+    padding-bottom: 40px; /* Add space for the footer */
+}
+
+@media (max-width: 768px) {
+    .ausstellung-description {
+        /* Keep your existing mobile styles */
+        padding-bottom: 50px; /* Increase padding for mobile */
+    }
+}
+
 /* ============================
    SLIDESHOW STYLES
    ============================ */
