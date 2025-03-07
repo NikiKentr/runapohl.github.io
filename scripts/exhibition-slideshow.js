@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event to close button
     if (popupClose) {
         popupClose.addEventListener('click', () => {
-            document.getElementById('imagePopup').style.display = 'none';
+            document.getElementById('imagePopup').classList.remove('active');
         });
     }
     
