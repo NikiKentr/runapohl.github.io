@@ -118,10 +118,11 @@
     margin-top: 0.025rem;
 }
 
+/* Update the flip-book controls buttons */
 .flip-book-controls button {
-    background: none;
+    background: rgba(255, 255, 255, 0.5); /* Add semi-transparent background */
     border: none;
-    color: #dd5030;
+    color: #f4a195; /* Use your salmon color */
     font-size: 2rem;
     cursor: pointer;
     padding: 0;
@@ -130,11 +131,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 50%; /* Make it circular */
 }
 
 .flip-book-controls button:hover {
-    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.8); /* Lighter background on hover */
+    opacity: 1; /* Keep it fully visible */
 }
 
 .flip-book-controls button:disabled {
@@ -142,31 +145,14 @@
     cursor: not-allowed;
 }
 
-#pageNumber {
-    color: #666;
-    font-size: 1rem;
-    min-width: 80px;
-    text-align: center;
-}
-
-/* Ensure no movement on hover, just opacity change */
-.zines-grid > * {
-    transition: opacity 0.3s ease !important;
-}
-
-.zines-grid > *:hover {
-    opacity: 0.7;
-    transform: none !important;
-}
-
-/* Close button */
+/* Update the close button */
 .close-button {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: none;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.5); /* Add semi-transparent background */
     border: none;
-    color: #dd5030;
+    color: #f4a195; /* Use your salmon color */
     font-size: 2rem;
     cursor: pointer;
     padding: 0;
@@ -175,14 +161,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease;
-    z-index: 1;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    border-radius: 50%; /* Make it circular */
 }
 
 .close-button:hover {
-    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.8); /* Lighter background on hover */
+    opacity: 1; /* Keep it fully visible */
 }
 
+#pageNumber {
+    color: #999; /* Lighter gray color */
+    font-size: 1rem;
+    min-width: 80px;
+    text-align: center;
+}
 /* Force no rounded corners on any images inside the modal */
 #flipBookModal img {
     border-radius: 0 !important;

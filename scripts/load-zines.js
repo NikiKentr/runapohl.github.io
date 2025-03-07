@@ -44,6 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
             preview: "PREVIEW_1.gif",
             pages: Array.from({length: 5}, (_, i) => `page${i + 1}.jpg`)
         },
+
+        {
+            title: "Kräftig, Deftig, Würzig, Gut...und SEXY!, 2024",
+            folder: "Kräftig, Deftig, Würzig, Gut...und SEXY!",
+            preview: "page1.jpg",
+            pages: Array.from({length: 8}, (_, i) => `page${i + 1}.jpg`)
+        },
+
         {
             title: "Abflug, 2020",
             folder: "Abglug",

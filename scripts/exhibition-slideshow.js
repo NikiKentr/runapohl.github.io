@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const slideshows = document.querySelectorAll('.slideshow-container');
     const popupImage = document.getElementById('popupImage');
     const imagePopup = document.getElementById('imagePopup');
+
+    // Get the close button
+    const popupClose = document.querySelector('.popup-close');
+
+    // Add click event to close button
+    if (popupClose) {
+        popupClose.addEventListener('click', () => {
+            document.getElementById('imagePopup').style.display = 'none';
+        });
+    }
     
     // Helper function to get the base URL for GitHub Pages
     const getBaseUrl = () => {

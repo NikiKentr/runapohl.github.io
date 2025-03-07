@@ -299,7 +299,7 @@
     align-items: center;
     justify-content: center;
     background: none;
-    color: white;
+    color:#f4a195;
     font-size: 40px;
     cursor: pointer;
     z-index: 10000;
@@ -309,7 +309,7 @@
 }
 
 .popup-prev:hover, .popup-next:hover {
-    color: #f4a195;
+    color: #f4a295d5;
 }
 
 .popup-prev {
@@ -325,7 +325,7 @@
     top: 20px;
     right: 20px;
     background: none;
-    color: white;
+    color: #f4a195;
     font-size: 40px;
     border: none;
     cursor: pointer;
@@ -334,7 +334,7 @@
 }
 
 .popup-close:hover {
-    color: #f4a195;
+    color: #f4a295d5;
 }
 
 .clickable-image {

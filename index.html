@@ -35,18 +35,12 @@
         
         .logo {
             margin-bottom: 60px;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
         }
         
         .logo.inactive {
-            cursor: default;
             opacity: 1 !important;
         }
         
-        .logo:hover:not(.inactive) {
-            opacity: 0.7;
-        }
         
         .logo img {
             width: 120px;
@@ -54,7 +48,6 @@
         }
         
         .featured-image {
-            cursor: pointer;
             max-width: 65%;
             transition: opacity 0.3s ease;
         }
@@ -64,9 +57,6 @@
             opacity: 1 !important;
         }
         
-        .featured-image:hover:not(.inactive) {
-            opacity: 0.7;
-        }
         
         .featured-image img {
             max-width: 100%;
@@ -78,7 +68,7 @@
             margin-top: 30px;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            transition: opacity 1.2s ease, visibility 0.1s ease;
             margin-bottom: 40px;
         }
         
@@ -219,17 +209,13 @@
             const logo = document.getElementById('logo');
             const featuredImage = document.getElementById('featuredImage');
             const menu = document.getElementById('menu');
-            
-            function showMenu() {
+    
+            // Set a timeout to show the menu automatically after page load
+            setTimeout(function() {
                 menu.classList.add('visible');
                 
-                // Add inactive class to disable hover and click
-                logo.classList.add('inactive');
-                featuredImage.classList.add('inactive');
-            }
-            
-            logo.addEventListener('click', showMenu);
-            featuredImage.addEventListener('click', showMenu);
+                
+            }, 1500); // 1.5 second delay before starting the fade
         });
     </script>
 </body>
