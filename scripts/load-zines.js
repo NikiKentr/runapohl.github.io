@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', function() {
             title: "EINS VON ALLEM",
             folder: "EINS_VON_ALLEM_1",
             preview: "Untitled(3).gif",
-            pages: Array.from({length: 6}, (_, i) => `page${i + 1}.JPG`)
+            pages: Array.from({length: 6}, (_, i) => `page${i + 1}.jpg`)
         },
         {
             title: "EINS VON ALLEM 2",
             folder: "EINS_VON_ALLEM_2",
             preview: "PREVIEW_1.gif",
-            pages: Array.from({length: 6}, (_, i) => `page${i + 1}.JPG`)
+            pages: Array.from({length: 5}, (_, i) => `page${i + 1}.jpg`)
         },
         {
             title: "Abflug, 2020",
