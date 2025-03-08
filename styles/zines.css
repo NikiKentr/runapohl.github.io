@@ -11,15 +11,17 @@
 .zine-preview {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    padding: 25px 0 0 0; /* Add 15px padding to the top, 0 to right, bottom, left */
     background: none;
     box-shadow: none;
+    height: 100%;
 }
 
 .zine-preview {
     display: flex;
     flex-direction: column;
     padding: 0;
+    margin-top: 25px; /* Add 15px margin to the top */
     background: none;
     box-shadow: none;
     height: 100%;
