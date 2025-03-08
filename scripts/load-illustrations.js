@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Nelly Dix, 2019.jpg',
         'Pommes Schranke, 2020.jpg',
         'Prinzesschen auf dem Gürkchen, 2019.jpg',
-        'Prinzessin, 2019.jpg',
+        'Prinzessin, 2019.JPG',
         'Rakete, 2019.jpg',
         'Ruhe vor dem BOF, 2022.jpg',
         'Saturday Nightschabeltier, 2019.jpg',
