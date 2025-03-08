@@ -210,8 +210,7 @@
 
 @media (max-width: 768px) {
     .page-content-wrapper {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
+        padding-bottom: 40px;
     }
 
     .zines-grid {
@@ -225,7 +224,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Dynamic columns */
         gap: 0.5rem;
-        padding: 2rem;
+        padding: 2rem 2rem 3rem 2rem; /* Increased bottom padding */
         width: 90%;
         max-width: 1200px;
         margin: 0 auto;
@@ -257,6 +256,7 @@
     .zine-preview {
         display: inline-block;
         width: 100%;
+        margin-bottom: 1rem;
         margin-bottom: 1rem;
     }
     
