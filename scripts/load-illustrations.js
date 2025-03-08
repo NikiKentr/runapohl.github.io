@@ -154,9 +154,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         img.classList.add('loaded');
                     };
                     tempImg.onerror = function() {
-                        // Optimized version doesn't exist, fall back to original
-                        img.src = originalPath;
-                        img.classList.add('loaded');
+                        // Try lowercase extension if uppercase was used or vice versa
+                        if (newExt !== ext && (newExt.toLowerCase() !== ext.toLowerCase())) {
+                            const altExt = ext.toLowerCase() === ext ? ext.toUpperCase() : ext.toLowerCase();
+                            const altPath = `${directory}/${baseName}${altExt}`;
+                            
+                            const altTempImg = new Image();
+                            altTempImg.onload = function() {
+                                img.src = altPath;
+                                img.classList.add('loaded');
+                            };
+                            altTempImg.onerror = function() {
+                                // Fall back to original if all else fails
+                                img.src = originalPath;
+                                img.classList.add('loaded');
+                            };
+                            altTempImg.src = altPath;
+                        } else {
+                            // Optimized version doesn't exist, fall back to original
+                            img.src = originalPath;
+                            img.classList.add('loaded');
+                        }
                     };
                     tempImg.src = optimizedPath;
                     
@@ -209,7 +227,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 popupImg.src = optimizedPopupPath;
             };
             testImg.onerror = function() {
-                popupImg.src = `images/illustrations/${file}`;
+                // Try with both lowercase and uppercase extension
+                const originalExt = file.substring(file.lastIndexOf('.'));
+                const altExt = originalExt.toLowerCase() === originalExt ? 
+                               originalExt.toUpperCase() : 
+                               originalExt.toLowerCase();
+                const altPath = `images/illustrations/${baseName}${altExt}`;
+                
+                const altTestImg = new Image();
+                altTestImg.onload = function() {
+                    popupImg.src = altPath;
+                };
+                altTestImg.onerror = function() {
+                    popupImg.src = `images/illustrations/${file}`; // Final fallback
+                };
+                altTestImg.src = altPath;
             };
             testImg.src = optimizedPopupPath;
             
