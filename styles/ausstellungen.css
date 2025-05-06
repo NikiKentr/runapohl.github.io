@@ -484,3 +484,8 @@
 }
 
 /* ... rest of the CSS code ... */
+
+/* Style for non-clickable exhibitions */
+.ausstellung-title.non-clickable {
+    cursor: default;
+}

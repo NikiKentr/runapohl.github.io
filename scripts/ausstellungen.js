@@ -97,16 +97,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get the preview element
         const preview = item.querySelector('.ausstellung-preview');
         
+        // Check if this is an upcoming/non-clickable exhibition
+        if (title.textContent.trim().includes("Upcoming:")) {
+            // Add non-clickable class if it doesn't have it already
+            title.classList.add('non-clickable');
+            
+            // Set default cursor for both title and preview
+            title.style.cursor = 'default';
+            preview.style.cursor = 'default';
+            
+            // Also add a class to the preview for easier CSS targeting
+            preview.classList.add('non-clickable-preview');
+            
+            // Do not add click events for upcoming exhibitions
+            return; 
+        }
+        
+        // Set cursor to pointer for clickable items
+        title.style.cursor = 'pointer';
+        preview.style.cursor = 'pointer';
+        
         // Define the URLs manually to ensure they match your file naming convention
         let detailUrl;
         const titleText = title.textContent.trim();
         
         // Map each exhibition title to its correct detail page URL
-        if (titleText === "Ars-Conectit-Festival 2024") {
-            detailUrl = "ausstellung-ars-conectit-festival-2024.html";
+        if (titleText === "85 Wochen Leckerwurst, Ars-Connectit-Festival 2024") {
+            detailUrl = "ausstellung-85-wochen-leckerwurst-ars-connectit-festival-2024.html";
         } else if (titleText === "Ars-Conectit-Festival 2023") {
             detailUrl = "ausstellung-ars-conectit-festival-2023.html";
-        } else if (titleText === "utopia-kiosk-2024") {
+        } else if (titleText === "Utopia Kiosk 2024") {
             detailUrl = "ausstellung-utopia-kiosk-2024.html";
         } else if (titleText === "2,2km 2013") {
             detailUrl = "ausstellung-2-2km-2013.html";
@@ -127,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Log the mapping for debugging
         console.log(`Exhibition: "${titleText}" → URL: "${detailUrl}"`);
         
-        // Add click event to title
+        // Add click event to title only for non-upcoming exhibitions
         title.addEventListener('click', function() {
             window.location.href = detailUrl;
         });
@@ -143,7 +163,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Enter') {
             // If user presses Enter while focusing an exhibition title
             if (document.activeElement.classList.contains('ausstellung-title')) {
-                const item = document.activeElement.closest('.ausstellung-item');
+                // Skip if it includes "Upcoming:"
+                if (document.activeElement.textContent.trim().includes("Upcoming:")) {
+                    return;
+                }
+                
                 const clickEvent = new MouseEvent('click', {
                     bubbles: true,
                     cancelable: true,
@@ -154,6 +178,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // If user presses Enter while focusing a preview
             if (document.activeElement.classList.contains('ausstellung-preview')) {
+                // Skip if the parent item has an upcoming title
+                const title = document.activeElement.closest('.ausstellung-item').querySelector('.ausstellung-title');
+                if (title && title.textContent.trim().includes("Upcoming:")) {
+                    return;
+                }
+                
                 const clickEvent = new MouseEvent('click', {
                     bubbles: true,
                     cancelable: true,
