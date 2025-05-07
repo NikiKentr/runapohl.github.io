@@ -11,6 +11,65 @@
     <meta name="description" content="Runa Pohl - Artist and Illustrator based in Schwäbisch Hall, Germany. Showcasing illustrations, zines, and original artwork.">
     <meta name="keywords" content="Runa Pohl, artist, illustrator, zines">
     <style>
+        /* News Ticker Styles */
+        #news-ticker-container {
+        width: 100%;
+        background-color: #ff93f5;
+        height: 40px;
+        position: relative;
+        z-index: 1000;
+        }
+
+        #news-ticker {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        }
+
+        #news-ticker-link {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+        }
+
+        #news-ticker-wrapper {
+        display: inline-block;
+        white-space: nowrap;
+        animation: ticker 80s linear infinite; /* Faster animation: 12s instead of 20s */
+        padding: 10px 0;
+        transform: translateX(-25%); /* Start in the middle */
+        }
+
+        .news-ticker-item {
+        font-family: 'Barlow', sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        padding-right: 50px;
+        }
+
+        /* Animation keyframes */
+        @keyframes ticker {
+        0% {
+            transform: translateX(-25%); /* Start from middle */
+        }
+        100% {
+            transform: translateX(-75%); /* End point adjusted */
+        }
+        }
+
+        /* Pause animation on hover */
+        #news-ticker:hover #news-ticker-wrapper {
+        animation-play-state: paused;
+        }
+
+        /* Hover effect for the entire ticker */
+        #news-ticker-link:hover .news-ticker-item {
+        color: #ddec53;
+        }
+
+
         body, html {
             margin: 0;
             padding: 0;
@@ -176,6 +235,38 @@
     </style>
 </head>
 <body>
+    <div id="news-ticker-container">
+        <div id="news-ticker">
+          <a href="ausstellungen.html" id="news-ticker-link">
+            <div id="news-ticker-wrapper">
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+              <span class="news-ticker-item">Upcoming Exhibition: May 16-18 Fanzineist Vienna Art Book & Zine Fair 2025</span>
+            </div>
+          </a>
+        </div>
+    </div>
     <div class="container">
         <div class="logo" id="logo">
             <img src="images/logo.png" alt="RUNA POHL">
