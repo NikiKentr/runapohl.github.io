@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <a href="https://www.instagram.com/runapohl/" target="_blank" class="social-icon">
+        <img src="images/instagram-icon.png" alt="Instagram" width="60" height="60">
+      </a>
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
@@ -11,6 +14,52 @@
     <meta name="description" content="Runa Pohl - Artist and Illustrator based in Schwäbisch Hall, Germany. Showcasing illustrations, zines, and original artwork.">
     <meta name="keywords" content="Runa Pohl, artist, illustrator, zines">
     <style>
+        /* Default style for desktop - increased size */
+    .social-icon {
+        position: fixed;
+        top: 50px;
+        right: 60px;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+    
+    .social-icon img {
+        width: 40px; /* Increased from 30px */
+        height: 40px; /* Increased from 30px */
+        display: block;
+    }
+    
+    .social-icon:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Media query for mobile devices - still relatively large */
+    @media screen and (max-width: 768px) {
+        .social-icon {
+            top: 20px;
+            right: 20px;
+        }
+        
+        .social-icon img {
+            width: 34px; /* Increased from 24px */
+            height: 34px; /* Increased from 24px */
+        }
+    }
+    
+    /* Small screens but still visible */
+    @media screen and (max-width: 480px) {
+        .social-icon {
+            top: 15px;
+            right: 15px;
+        }
+        
+        .social-icon img {
+            width: 30px; /* Increased from 20px */
+            height: 30px; /* Increased from 20px */
+        }
+    }
+     
+    
         /* News Ticker Styles */
         #news-ticker-container {
         width: 100%;
@@ -235,6 +284,7 @@
     </style>
 </head>
 <body>
+    <!--
     <div id="news-ticker-container">
         <div id="news-ticker">
           <a href="ausstellungen.html" id="news-ticker-link">
@@ -267,6 +317,7 @@
           </a>
         </div>
     </div>
+    -->
     <div class="container">
         <div class="logo" id="logo">
             <img src="images/logo.png" alt="RUNA POHL">
