@@ -130,6 +130,9 @@ document.addEventListener('DOMContentLoaded', function() {
             detailUrl = "ausstellung-utopia-kiosk-2024.html";
         } else if (titleText === "2,2km 2013") {
             detailUrl = "ausstellung-2-2km-2013.html";
+        } else if (titleText === "Fanzineist Vienna Art Book & Zine Fair 2025") {
+            detailUrl = "ausstellung-fanzineist-vienna-art-book-zine-fair-2025.html";
+        
         } else {
             // Fallback URL generation in case there's an exhibition not in the mapping
             detailUrl = "ausstellung-" + titleText.toLowerCase()
