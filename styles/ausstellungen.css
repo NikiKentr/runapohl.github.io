@@ -489,3 +489,73 @@
 .ausstellung-title.non-clickable {
     cursor: default;
 }
+
+
+/* Portrait image handling for exhibition previews */
+.ausstellung-item:hover .ausstellung-preview {
+    opacity: 1;
+    height: auto; /* Changed from fixed 400px to auto */
+    min-height: 400px; /* Minimum height for consistency */
+    max-height: none; /* Remove max height restriction */
+}
+
+.preview-image {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 500px;
+    padding: 1rem 0; /* Add padding for breathing room */
+}
+
+.preview-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensure full image is visible */
+    transition: transform 0.5s ease;
+    max-height: none; /* Remove height restriction */
+}
+
+/* Specific handling for portrait images */
+.preview-image img[src*="das-herz-einer-frau"],
+.preview-image img[data-src*="das-herz-einer-frau"],
+.preview-image img[src*="fanzineist"],
+.preview-image img[data-src*="fanzineist"] {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Alternative approach: Add classes for portrait exhibitions */
+.ausstellung-item.portrait-exhibition:hover .ausstellung-preview {
+    height: auto !important;
+    min-height: 500px !important;
+}
+
+.ausstellung-item.portrait-exhibition .preview-image {
+    max-width: 400px; /* Slightly smaller max width for portrait */
+    padding: 1.5rem 0;
+}
+
+.ausstellung-item.portrait-exhibition .preview-image img {
+    max-height: 600px;
+    width: auto; /* Let width adjust to maintain aspect ratio */
+    max-width: 100%;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .ausstellung-item:hover .ausstellung-preview {
+        height: auto !important;
+        min-height: auto !important;
+    }
+    
+    .preview-image img {
+        max-height: 400px;
+    }
+    
+    .ausstellung-item.portrait-exhibition .preview-image img {
+        max-height: 350px;
+    }
+}
