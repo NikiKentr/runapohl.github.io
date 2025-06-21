@@ -572,3 +572,53 @@ nav ul li a.active {
 .popup-close:hover {
     opacity: 0.7;
 }
+
+
+/* SHOP CONTANCT STYLE */
+.contact-links {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    color: #f4a195;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background-color: #f4a195;
+    color: white;
+}
+
+.contact-separator {
+    color: #585858;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .contact-separator {
+        display: none;
+    }
+    
+    .stay-tuned-text {
+        font-size: 1rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+}
